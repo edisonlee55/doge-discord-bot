@@ -1,0 +1,26 @@
+{
+  "name": "doge-discord-bot",
+  "version": "1.0.0",
+  "description": "Doge Discord Music Bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "discordbot",
+    "doge",
+    "dogebot"
+  ],
+  "author": "Edison Lee <edisonlee@edisonlee55.com>",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js-fork": "11.4.1",
+    "ffmpeg-binaries-fork": "^4.0.1",
+    "formidable": "^1.2.1",
+    "opusscript": "^0.0.6",
+    "simple-youtube-api": "^5.0.1",
+    "ytdl-core": "^0.20.2"
+  }
+}
