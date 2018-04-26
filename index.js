@@ -13,7 +13,10 @@ client.on('warn', console.warn);
 
 client.on('error', console.error);
 
-client.on('ready', () => console.log('Yo this ready!'));
+client.on('ready', () => {
+	console.log(`Logged in as ${client.user.tag}!`);
+	client.user.setActivity("d!help");
+});
 
 client.on('disconnect', () => console.log('I just disconnected, making sure you know, I will reconnect now...'));
 
@@ -30,8 +33,28 @@ client.on('message', async msg => { // eslint-disable-line
 
 	let command = msg.content.toLowerCase().split(' ')[0];
 	command = command.slice(PREFIX.length)
-
-	if (command === 'play') {
+	if (command === 'help') {
+		msg.channel.send({
+			embed: {
+				color: 3447003,
+				title: "Doge Discord Bot - Help",
+				description: "Below you can see all the commands:",
+				fields: [
+					{
+						name: "Doge Bot",
+						value: "`help`"
+					},
+					{
+						name: "Music",
+						value: "`play`**,**`skip`**,**`stop`**,**`volume`**,**`np`**,**`queue`"
+					}, {
+						name: "Need Support?",
+						value: "Contact <@213656926414831616>:\nhttps://www.edisonlee55.com/#contact"
+					}
+				]
+			}
+		});
+	} else if (command === 'play') {
 		const voiceChannel = msg.member.voiceChannel;
 		if (!voiceChannel) return msg.channel.send('I\'m sorry but you need to be in a voice channel to play music!');
 		const permissions = voiceChannel.permissionsFor(msg.client.user);
