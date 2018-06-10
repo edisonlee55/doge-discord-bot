@@ -2,12 +2,26 @@ const { Client, Util } = require('discord.js-fork');
 const { TOKEN, PREFIX, GOOGLE_API_KEY } = require('./config');
 const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
-
+const express = require("express");
 const client = new Client({ disableEveryone: true });
 
 const youtube = new YouTube(GOOGLE_API_KEY);
 
 const queue = new Map();
+
+var expressPage = "<html><head><title>Doge Discord Bot</title></head><body><h1>Doge Discord Bot</h1></body></html>";
+let app = express();
+app.get("/", function (req, res) {
+  res.writeHead(200, { "Content-Type": "text/html" });
+  res.write(expressPage);
+  res.end();
+});
+var server = app.listen(process.env.PORT || 3000, function () {
+  console.log("Doge Discord Bot v1.0.1");
+  console.log("Copyright (c) 2018 MING-CHIEN LEE. All rights reserved.\n");
+  console.log("Fork from Dev-Yukine/Music-Bot (https://github.com/Dev-Yukine/Music-Bot)");
+  console.log("Listening express on port %s", server.address().port);
+});
 
 client.on('warn', console.warn);
 
